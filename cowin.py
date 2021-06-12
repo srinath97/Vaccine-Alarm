@@ -13,6 +13,7 @@ districtID = "571"
 today = date.today().strftime("%d/%m/%Y") # Ex: 12/06/2021
 vaccine = "COVAXIN" # OR "COVISHIELD". Leave it empty if you have no preference
 dose = "2" # Must be either 1 or 2
+min_age_limit = 18 # Should be 18 or 45
 ##########################################################
 
 otp = ""
@@ -30,7 +31,6 @@ class GP(BaseHTTPRequestHandler):
         global otp
         otp = json['otp'][0]
         print(otp)
-        self.wfile.write("<html><body><h1>POST Request Received!</h1></body></html>")
     def start():
         print("Hello")
 
@@ -51,7 +51,7 @@ def checkVaccineSlot(centers):
     success = False
     for center in centers['centers']:
         for session in center['sessions'] :
-            if session['min_age_limit'] == 18 and session['available_capacity'] > 0 :
+            if session['min_age_limit'] == min_age_limit and session['available_capacity_dose' + dose] > 0 :
                 output = {}
                 output['name'] = str(center['name'])
                 output['date'] = str(session['date'])
