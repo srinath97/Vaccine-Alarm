@@ -9,9 +9,9 @@ import requests, json, pycurl, hashlib, time, cgi, threading
 ##########################################################
 # CONFIG
 ##########################################################
-districtID = "571"
+districtID = "571" # This is specific to Chennai. Check README.md on how to set this value.
 today = date.today().strftime("%d/%m/%Y") # Ex: 12/06/2021
-vaccine = "COVAXIN" # OR "COVISHIELD". Leave it empty if you have no preference
+vaccine = "" # "COVISHIELD" OR "COVAXIN". Leave it empty if you have no preference
 dose = "2" # Must be either 1 or 2
 min_age_limit = 18 # Should be 18 or 45
 ##########################################################
